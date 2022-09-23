@@ -10,6 +10,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+      - uses: docker/build-push-action@v3
+        with:
+          build-args: KICS_IMAGE=checkmarx/kics:v1.5.14
       - name: Run KICS Scan
         uses: gabriel-cx/kics-github-action@v1.6
         with:
@@ -20,7 +23,6 @@ jobs:
           output_path: ./results
           output_formats: json,html
           type: dockerfile
-          build-args: KICS_IMAGE=checkmarx/kics:v1.5.14
       - uses: actions/upload-artifact@v3
         with:
           name: results
