@@ -15,7 +15,7 @@ jobs:
         with:
           build-args: KICS_IMAGE=checkmarx/kics:v1.5.14
       - name: Run KICS Scan
-        uses: gabriel-cx/kics-github-action@v1.6
+        uses: checkmarx/kics-action@v1.6
         with:
 #           token: ${{ secrets.GITHUB_TOKEN }}
           path: "./Dockerfile"
