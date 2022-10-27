@@ -109,5 +109,5 @@ Join the <a href="https://github.com/Checkmarx/kics/discussions" target="_blank"
 **Keeping Infrastructure as Code Secure!**
 
 ---
-
+test gh action
 &copy; 2021 Checkmarx Ltd. All Rights Reserved.
