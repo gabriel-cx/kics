@@ -105,3 +105,4 @@ You're welcome to join our monthly [community meetings](docs/community.md), talk
 ---
 
 &copy; 2023 Checkmarx Ltd. All Rights Reserved.
+
