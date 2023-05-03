@@ -10,16 +10,20 @@
       
       
       
-        <link rel="canonical" href="http://docs.kics.io/develop/flags/">
+        <link rel="canonical" href="http://docs.kics.io/develop/changes1_7/">
       
       
+        <link rel="prev" href="../changes1_6/">
+      
+      
+        <link rel="next" href="../queries/">
       
       <link rel="icon" href="../img/logo/kics-donkey.ico">
       <meta name="generator" content="mkdocs-1.4.3, mkdocs-material-9.1.9">
     
     
       
-        <title>Flags - KICS</title>
+        <title>Changes in v1.7.0 - KICS</title>
       
     
     
@@ -73,7 +77,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#flags" class="md-skip">
+        <a href="#changes_in_v170" class="md-skip">
           Skip to content
         </a>
       
@@ -111,7 +115,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Flags
+              Changes in v1.7.0
             
           </span>
         </div>
@@ -215,13 +219,15 @@
         
   
   
+    
+  
 
 
   
   
   
     <li class="md-tabs__item">
-      <a href="../documentation/" class="md-tabs__link">
+      <a href="../documentation/" class="md-tabs__link md-tabs__link--active">
         Documentation
       </a>
     </li>
@@ -382,14 +388,16 @@
 
   
   
+    
+  
   
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
       
       
-      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
       
       
       
@@ -398,7 +406,7 @@
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
         <label class="md-nav__title" for="__nav_2">
           <span class="md-nav__icon md-icon"></span>
           Documentation
@@ -577,11 +585,52 @@
               
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../changes1_7/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Changes in v1.7.0
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         Changes in v1.7.0
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#breaking_changes" class="md-nav__link">
+    Breaking Changes
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1340,6 +1389,8 @@
   
   
   
+    
+  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
@@ -1348,36 +1399,8 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#flags" class="md-nav__link">
-    Flags
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#hidden_and_deprecated_flags" class="md-nav__link">
-    Hidden and Deprecated Flags
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#flag_types" class="md-nav__link">
-    Flag types
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#accessing_and_setting_flags" class="md-nav__link">
-    Accessing and setting flags
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#usage_variables" class="md-nav__link">
-    Usage variables
+  <a href="#breaking_changes" class="md-nav__link">
+    Breaking Changes
   </a>
   
 </li>
@@ -1400,83 +1423,20 @@
   
 
 
-  <h1>Flags</h1>
-
-<h2 id="flags">Flags<a class="headerlink" href="#flags" title="Permanent link">&para;</a></h2>
-<p>KICS scan flags are defined on <code>kics-flags.json</code> and <code>scan-flags.json</code>, that can be found on <code>console/assets</code> directory.</p>
-<p>The structure of a flag on JSON definition should use the following structure:</p>
-<pre><code class="language-json">{
-    &quot;flagName&quot;: {
-        &quot;flagType&quot;: &quot;&lt;multiStr|str|bool|int&gt;The type of the flag&quot;,
-        &quot;shorthandFlag&quot;: &quot;&lt;optional&gt;Shorthand for the flag, MUST be one character only&quot;,
-        &quot;defaultValue&quot;: &quot;The default value of the flag, MUST be string or null&quot;,
-        &quot;usage&quot;: &quot;Usage description of the flag, can use variables, which is described below&quot;
-    }
-}
-</code></pre>
-<p>Example of a valid <code>flags.json</code> file:</p>
-<pre><code class="language-json">{
-    &quot;output-path&quot;: {
-        &quot;flagType&quot;: &quot;str&quot;,
-        &quot;shorthandFlag&quot;: &quot;o&quot;,
-        &quot;defaultValue&quot;: &quot;&quot;,
-        &quot;usage&quot;: &quot;directory path to store reports&quot;
-    },
-    &quot;type&quot;: {
-        &quot;flagType&quot;: &quot;multiStr&quot;,
-        &quot;shorthandFlag&quot;: &quot;t&quot;,
-        &quot;defaultValue&quot;: &quot;&quot;,
-        &quot;usage&quot;: &quot;case insensitive list of platform types to scan\n(${supportedPlatforms})&quot;
-    }
-}
-</code></pre>
-<h2 id="hidden_and_deprecated_flags">Hidden and Deprecated Flags<a class="headerlink" href="#hidden_and_deprecated_flags" title="Permanent link">&para;</a></h2>
-<p>To mark a flag as hidden use the following configuration:</p>
-<pre><code class="language-json">{
-  &quot;disable-telemetry&quot;: {
-    &quot;flagType&quot;: &quot;bool&quot;,
-    &quot;shorthandFlag&quot;: &quot;&quot;,
-    &quot;defaultValue&quot;: &quot;false&quot;,
-    &quot;usage&quot;: &quot;disable usage telemetry requests&quot;,
-    &quot;hidden&quot;: true
-  }
-}
-</code></pre>
-<p>If you also want to display a flag deprecation warning you can define it like this:</p>
-<pre><code class="language-json">{
-  &quot;disable-full-descriptions&quot;: {
-    &quot;flagType&quot;: &quot;bool&quot;,
-    &quot;shorthandFlag&quot;: &quot;&quot;,
-    &quot;defaultValue&quot;: &quot;false&quot;,
-    &quot;usage&quot;: &quot;disable request for full descriptions and use default vulnerability descriptions&quot;,
-    &quot;hidden&quot;: true,
-    &quot;deprecated&quot;: true,
-    &quot;deprecatedInfo&quot;: &quot;use --disable-telemetry instead&quot;
-  }
-}
-</code></pre>
-<h2 id="flag_types">Flag types<a class="headerlink" href="#flag_types" title="Permanent link">&para;</a></h2>
-<p>As described above you should describe which type is the flag, currently there is 4 flags types:
-- str: Represents a string type;
-- int: Represents an integer type;
-- bool: Represents a boolean type;
-- multiStr: Represents a string slice type, this receives multiple strings comma-separated;</p>
-<p>This type is used to cast <code>defaultValue</code> field and to determine which map it will be saved.</p>
-<h2 id="accessing_and_setting_flags">Accessing and setting flags<a class="headerlink" href="#accessing_and_setting_flags" title="Permanent link">&para;</a></h2>
-<p>If you want to access flag, you should use get functions and the name of the flag. Currently there are 4 get functions:
-- <code>getStrFlag(flagName)</code>: Returns a string value of requested flag;
-- <code>getIntFlag(flagName)</code>: Returns a integer value of requested flag;
-- <code>getBoolFlag(flagName)</code>: Returns a boolean value of requested flag;
-- <code>getMultiStrFlag(flagName)</code>: Returns a slice of strings of requested flag;</p>
-<p>You can also set a flag value, using set functions. Currently there are 2 set functions:
-- <code>setStrFlag(flagName)</code>: Sets a flag with string value;
-- <code>setMultiStrFlag(flagName)</code>: Sets a flag with slice of strings value;</p>
-<h2 id="usage_variables">Usage variables<a class="headerlink" href="#usage_variables" title="Permanent link">&para;</a></h2>
-<p>Usage field has a special function that replace variables found in this field, using the syntax <code>${variable}</code>. If a variable is listed when evaluating usage, it will replace it with this text. Currently there are 3 variables supported:
-- <code>sliceInstructions</code>: A constant with instructions for slice flags;
-- <code>supportedPlatforms</code>: The result of <code>ListSupportedPlatforms</code> function converted to string, which gets all KICS supported platforms;
-- <code>supportedProviders</code>: The result of <code>ListSupportedCloudProviders</code> function converted to string, which gets all KICS supported providers;</p>
-<p>You can add variables by modifying <code>variables</code> map on <code>evalUsage</code> function of flags.go file.</p>
+<h1 id="changes_in_v170">Changes in v1.7.0<a class="headerlink" href="#changes_in_v170" title="Permanent link">&para;</a></h1>
+<hr />
+<h2 id="breaking_changes">Breaking Changes<a class="headerlink" href="#breaking_changes" title="Permanent link">&para;</a></h2>
+<h3 id="deprecations">Deprecations<a class="headerlink" href="#deprecations" title="Permanent link">&para;</a></h3>
+<p>KICS 1.7.0 version removed some of our flags and keep using their default values. 
+They are the following: </p>
+<ul>
+<li>--minimal-ui</li>
+<li>--no-progress</li>
+<li>--no-color</li>
+</ul>
+<h3 id="flag_replacement">Flag replacement<a class="headerlink" href="#flag_replacement" title="Permanent link">&para;</a></h3>
+<p>From v1.7.0, KICS will no longer support the flag <code>--disable-full-descriptions</code>. Instead, a new flag can be used: <code>--disable-telemetry</code>.</p>
+<p>For more details, see this <a href="https://docs.kics.io/latest/results/#telemetry">link</a>.</p>
 
 
 
