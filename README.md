@@ -16,6 +16,12 @@
 <img alt="KICS - Keep Infrastructure as Code Secure" src="docs/img/logo/kics_new_logo_2022_dark.png#gh-light-mode-only" width="500">
 <img alt="KICS - Keep Infrastructure as Code Secure" src="docs/img/logo/kics_new_logo_2022_white.png#gh-dark-mode-only" width="500">
 
+
+
+
+
+
+
 ---
 
 <a href="https://www.kics.io" title="www.kics.io"><img src="docs/img/button_www-kics-io.png" align="right"></a>
