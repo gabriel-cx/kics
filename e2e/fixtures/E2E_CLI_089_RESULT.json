@@ -20,8 +20,8 @@
   },
   "total_counter": 2,
   "total_bom_resources": 0,
-  "start": "2024-02-26T16:32:34.7508686Z",
-  "end": "2024-02-26T16:32:35.1060554Z",
+  "start": "2024-05-28T12:59:49.4123051+01:00",
+  "end": "2024-05-28T12:59:49.817655+01:00",
   "paths": [
     "/path/test/fixtures/test_critical_severity/run_block_injection/test",
     "/path/test/fixtures/test_critical_severity/run_block_injection/query"
